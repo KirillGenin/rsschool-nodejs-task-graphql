@@ -1,4 +1,5 @@
 import { ProfileType } from '../profile/types.js';
+import { PostType } from '../post/types.js';
 import { GraphQLFloat, GraphQLList, GraphQLObjectType, GraphQLString } from 'graphql';
 import { UUIDType } from '../types/uuid.js';
 import { PrismaClient } from '@prisma/client';
@@ -42,6 +43,12 @@ export const UserType = new GraphQLObjectType({
 
         return results.map((result) => result.author);
       },
+    },
+
+    posts: {
+      type: new GraphQLList(PostType),
+      resolve: async ({ id }) =>
+        await prismaClient.post.findMany({ where: { authorId: id } }),
     },
   }),
 });
