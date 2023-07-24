@@ -1,4 +1,5 @@
 ## Assignment: Graphql
+
 ### Tasks:
 1. Add logic to the graphql endpoint: ./src/routes/graphql.  
 Constraints and logic for gql queries should be done based on restful implementation.  
